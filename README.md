@@ -1,39 +1,41 @@
 ## PHP Toolkit
 
-Standalone PHP libraries for use in WordPress plugins and standalone PHP projects:
+**A collection of lightweight, dependency-free PHP libraries designed for WordPress and PHP projects.**
 
--   XMLProcessor – stream-parse XML files on any PHP installation (no libxml2 required).
--   Git – a pure PHP implementation of Git client and server.
--   HttpClient – a streaming, non-blocking, concurrent HTTP client library with no curl dependency.
--   Zip – stream-parse and stream-write ZIP files with no libzip dependency.
--   Data Liberation – generic streaming data importers to WordPress. Supports WXR, zipped markdown, remote git repos, rewriting URLs, and more.
--   ByteStream – composable byte streaming utilities – readers, writers, filters.
--   Markdown – convert between markdown and block markup with no dependencies.
--   Filesystem – single API for working with local files, Git, Google drive, memory, etc.
+### Purpose
 
-This fork consolidates a few earlier projects and explorations into a single composer package.
+This toolkit provides standalone PHP components that work without requiring external PHP extensions (like libxml2, curl, or libzip). Each library is designed to be:
+- ✅ **WordPress-first** but framework-agnostic
+- ✅ **Dependency-free** – minimal external requirements
+- ✅ **Reusable** across different environments (web, CLI, browser extensions)
+- ✅ **Compatible** with PHP 7.2+ and major WordPress versions
 
-### Using the Blueprints v2 runner
+### Available Components
 
-The Blueprints v2 runner is an all-php CLI tool that runs Blueprints v1 and v2. To use it, download [blueprints.phar from the latest release](https://github.com/WordPress/php-toolkit/releases) and run it:
+| Component | Description | Key Benefit |
+|-----------|-------------|-------------|
+| **XMLProcessor** | Stream-parse XML files | No libxml2 required |
+| **Git** | Pure PHP Git client and server | No system Git needed |
+| **HttpClient** | Streaming, non-blocking HTTP client | No curl dependency |
+| **Zip** | Stream-parse and stream-write ZIP files | No libzip dependency |
+| **Data Liberation** | Streaming data importers for WordPress | Supports WXR, markdown, Git repos, URL rewriting |
+| **ByteStream** | Composable byte streaming utilities | Readers, writers, and filters |
+| **Markdown** | Convert between markdown and block markup | No dependencies |
+| **Filesystem** | Unified API for multiple storage backends | Works with local files, Git, Google Drive, memory |
+| **Blueprints** | WordPress site setup automation | Run Blueprints v1 and v2 |
+| **HTML/BlockParser** | HTML and WordPress block parsing | Process HTML and blocks |
+| **HttpServer** | HTTP server implementation | Build HTTP servers in PHP |
 
-```sh
-php blueprints.phar
+### Quick Start
+
+#### Install via Composer
+
+Install the entire toolkit:
+```bash
+composer require wp-php-toolkit/php-toolkit
 ```
 
-From there, follow the help message for required arguments and options.
-
-If you want to use Blueprints as a library, you absolutely can. It is designed to be reusable,
-compatible with web and CLI environments on PHP 7.2+. There's not much technical documentation
-at this point but you can refer to the [blueprints.php file](https://github.com/WordPress/php-toolkit/blob/219dc4e846af270a5009e523244d0ec23baaa32a/components/Blueprints/bin/blueprint.php#L226) to see
-how the runner is implemented.
-
-### Using the components
-
-The individual components are now distributed via Composer at [https://packagist.org/packages/wp-php-toolkit](https://packagist.org/packages/wp-php-toolkit). You can install specific components you need rather than the entire toolkit.
-
-To install a specific component, use composer:
-
+Or install specific components you need:
 ```bash
 composer require wp-php-toolkit/http-client
 composer require wp-php-toolkit/data-liberation
@@ -41,9 +43,34 @@ composer require wp-php-toolkit/git
 # ... and so on for other components
 ```
 
-#### PHAR distribution
+The individual components are distributed via Composer at [https://packagist.org/packages/wp-php-toolkit](https://packagist.org/packages/wp-php-toolkit).
 
-For convenience, a standalone Blueprints runner and other tools from this repository are shipped as phar files available in the [GitHub releases](https://github.com/WordPress/php-toolkit/releases).
+#### Use the Blueprints CLI Tool
+
+Download [blueprints.phar from the latest release](https://github.com/WordPress/php-toolkit/releases) and run:
+```sh
+php blueprints.phar
+```
+
+If you want to use Blueprints as a library, you absolutely can. It is designed to be reusable,
+compatible with web and CLI environments on PHP 7.2+. There's not much technical documentation
+at this point but you can refer to the [blueprints.php file](https://github.com/WordPress/php-toolkit/blob/219dc4e846af270a5009e523244d0ec23baaa32a/components/Blueprints/bin/blueprint.php#L226) to see
+how the runner is implemented.
+
+#### PHAR Distribution
+
+For convenience, standalone tools from this repository (including the Blueprints runner) are shipped as phar files available in the [GitHub releases](https://github.com/WordPress/php-toolkit/releases).
+
+---
+
+This fork consolidates a few earlier projects and explorations into a single composer package.
+
+### Who Should Use This?
+
+- **WordPress Plugin Developers** – Build plugins without worrying about missing PHP extensions
+- **PHP Developers** – Need lightweight, portable libraries that work across different hosting environments
+- **WordPress Playground Users** – Run WordPress in browsers, CLIs, or desktop apps
+- **CI/CD Pipeline Engineers** – Need reliable PHP tools without system dependencies
 
 ### Design goals
 
